@@ -1,5 +1,5 @@
 syntax = "proto3";
-package ai_audio_file_to_text_stream;
+package ai_audio_to_audio;
 import "google/protobuf/empty.proto";
 
 message AudioContentRequest {
@@ -7,11 +7,11 @@ message AudioContentRequest {
     bytes AudioContent = 2;
 }
 
-message TextStreamResponse{
-    string Token = 1;
+message AudioChunkModel{
+    bytes Data = 1;
 }
 
 service AudioFileToTextStream {
-    rpc Execute(stream AudioContentRequest) returns (stream TextStreamResponse);
+    rpc Execute(stream AudioContentRequest) returns (stream AudioChunkModel);
     rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
 }

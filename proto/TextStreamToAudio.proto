@@ -2,7 +2,7 @@ syntax = "proto3";
 package ai_audio_file_to_text_stream;
 import "google/protobuf/empty.proto";
 
-message TextStreamToTextStreamRequest {
+message TextStreamRequest {
     string SystemPrompt = 1;
     string TextContent = 2;
 }
@@ -12,6 +12,6 @@ message AudioChunkResponse{
 }
 
 service AudioFileToTextStream {
-    rpc Execute(stream TextStreamToTextStreamRequest) returns (stream AudioChunkResponse);
+    rpc Execute(stream TextStreamRequest) returns (stream AudioChunkResponse);
     rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
 }
