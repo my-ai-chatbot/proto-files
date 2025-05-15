@@ -1,0 +1,17 @@
+syntax = "proto3";
+package ai_audio_file_to_text_stream;
+import "google/protobuf/empty.proto";
+
+message TextStreamToTextStreamRequest {
+    string SystemPrompt = 1;
+    bytes AudioContent = 2;
+}
+
+message TextStreamModel{
+    string Token = 1;
+}
+
+service AudioFileToTextStream {
+    rpc Execute(stream TextStreamToTextStreamRequest) returns (stream TextStreamModel);
+    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
